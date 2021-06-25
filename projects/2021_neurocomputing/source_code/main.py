@@ -1,5 +1,5 @@
 """
-Main script to lauch the experiments.
+Main script to launch the experiments.
 
 usage: python main.py [-h] [--port PORT] [--test TEST] [--type TYPE] robot
 
