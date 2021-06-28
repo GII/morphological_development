@@ -1,3 +1,3 @@
 # Proyects
 
-Different developed on the morphological development field
+Projects developed on the morphological development field.

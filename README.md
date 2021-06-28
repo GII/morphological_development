@@ -11,5 +11,5 @@ It is structured into three main folders:
 
 For any doubt, write an issue or contact me: martin.naya@udc.es
 
-The group: https://www.gii.udc.es/?id=3
+The Integrated Group For Engineering Research: https://www.gii.udc.es/?id=3
 
