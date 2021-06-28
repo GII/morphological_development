@@ -1,3 +1,5 @@
+"""This module contains the class to instance for running morphogical development experiments."""
+
 import os, sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".", "lib"))
@@ -21,9 +23,7 @@ class MorphologicalDevExperiment(object):
     :param config: Parameter for the evolution configuration.
     :param handler: The joint handlers of the robot with which the experiment is carried out.
     :param data: Class to store relevant data during the evolution
-    :param growth: Indicates the type of the experiment:
-        - growth = True: a growth experiment
-        - growth = Fasle: a non develpment experiment
+    :param growth: Indicates the type of the experiment(growth = True: a growth experiment, growth = Fasle: a non develpment experiment)
 
     :type port: string
     :type sim: VREPSimulatorFacade

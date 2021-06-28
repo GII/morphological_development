@@ -26,6 +26,15 @@ class EvolutionConfig(object):
         self.neat_params = self.set_NEAT_parameters(self.populationSize)
 
     def set_NEAT_parameters(self, populationSize):
+        """Set configuration parameters of the NEAT algorithm.
+
+        :param populationSize: the size of the population for the evolution
+        :type populationSize: integer
+
+        :return: The parameters for the NEAT algorithm.
+        :rtype: NEAT.Parameters
+        """
+
         # Configuration parameters of the NEAT algorithm
         params = NEAT.Parameters()
 

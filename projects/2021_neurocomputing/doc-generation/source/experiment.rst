@@ -1,5 +1,6 @@
-Morphological development experiment
-====================================
+
+Experiment
+==========
 
 .. automodule:: morph_dev_experiment
     :members:

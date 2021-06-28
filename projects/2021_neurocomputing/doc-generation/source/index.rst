@@ -8,10 +8,6 @@ Morphological development
 
    app.rst
    experiment.rst
-   
-   Morphological development 
-   =========================
-
    config.rst
    util.rst
    robot.rst

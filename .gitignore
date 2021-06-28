@@ -68,3 +68,6 @@ __pypackages__/
 # Visual Studio Code settings
 .vscode
 
+# macos folder files
+.DS_Store
+
