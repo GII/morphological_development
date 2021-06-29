@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Robot settings &mdash; Morphological development 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Util" href="util.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Morphological development
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiment.html">Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Robot settings</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Morphological development</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Robot settings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/robot.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-robot.joint_handler">
+<span id="robot-settings"></span><h1>Robot settings<a class="headerlink" href="#module-robot.joint_handler" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="robot.joint_handler.JointHandler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">robot.joint_handler.</span></span><span class="sig-name descname"><span class="pre">JointHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/joint_handler.html#JointHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.joint_handler.JointHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to operate with the handlers of the different joints and shapes of the robot.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.joint_handler.JointHandler.get_and_set_model_to_position">
+<span class="sig-name descname"><span class="pre">get_and_set_model_to_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/joint_handler.html#JointHandler.get_and_set_model_to_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.joint_handler.JointHandler.get_and_set_model_to_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the robot to the position received as parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>contGen</strong> (<em>integer</em>) – the generation number</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.joint_handler.JointHandler.get_head_position">
+<span class="sig-name descname"><span class="pre">get_head_position</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/joint_handler.html#JointHandler.get_head_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.joint_handler.JointHandler.get_head_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the robot’s head position.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.joint_handler.JointHandler.grow_legs">
+<span class="sig-name descname"><span class="pre">grow_legs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finalLength</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/joint_handler.html#JointHandler.grow_legs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.joint_handler.JointHandler.grow_legs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grow robot’s legs to final length</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>finalLength</strong> (<em>float</em>) – the length the robot’s legs will have after this method</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-robot.quad_handler"></span><dl class="py class">
+<dt class="sig sig-object py" id="robot.quad_handler.QuadHandler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">robot.quad_handler.</span></span><span class="sig-name descname"><span class="pre">QuadHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/quad_handler.html#QuadHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.quad_handler.QuadHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robot.joint_handler.JointHandler" title="robot.joint_handler.JointHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">robot.joint_handler.JointHandler</span></code></a></p>
+<p>This class represents the handlers to operate with a quad robot.</p>
+<p>It contains the properties and methods the quad robots have in common,
+regardless of the number of joints the robot has.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.quad_handler.QuadHandler.grow_legs">
+<span class="sig-name descname"><span class="pre">grow_legs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finalLength</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/quad_handler.html#QuadHandler.grow_legs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.quad_handler.QuadHandler.grow_legs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grow robot’s legs to final length</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-robot.quad_8DOF_handler"></span><dl class="py class">
+<dt class="sig sig-object py" id="robot.quad_8DOF_handler.Quad8DOFJointHandler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">robot.quad_8DOF_handler.</span></span><span class="sig-name descname"><span class="pre">Quad8DOFJointHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/quad_8DOF_handler.html#Quad8DOFJointHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.quad_8DOF_handler.Quad8DOFJointHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robot.quad_handler.QuadHandler" title="robot.quad_handler.QuadHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">robot.quad_handler.QuadHandler</span></code></a></p>
+<p>This class represents the handlers to operate with a quad robot with 8 Degrees of Freedom.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.quad_8DOF_handler.Quad8DOFJointHandler.get_joint_handlers">
+<span class="sig-name descname"><span class="pre">get_joint_handlers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/quad_8DOF_handler.html#Quad8DOFJointHandler.get_joint_handlers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.quad_8DOF_handler.Quad8DOFJointHandler.get_joint_handlers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the needed handlers of the robot joints.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.quad_8DOF_handler.Quad8DOFJointHandler.move_joints_to_position">
+<span class="sig-name descname"><span class="pre">move_joints_to_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">final_angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/quad_8DOF_handler.html#Quad8DOFJointHandler.move_joints_to_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.quad_8DOF_handler.Quad8DOFJointHandler.move_joints_to_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the joints of the robot to the target position.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-robot.quad_16DOF_handler"></span><dl class="py class">
+<dt class="sig sig-object py" id="robot.quad_16DOF_handler.Quad16DOFJointHandler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">robot.quad_16DOF_handler.</span></span><span class="sig-name descname"><span class="pre">Quad16DOFJointHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/quad_16DOF_handler.html#Quad16DOFJointHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.quad_16DOF_handler.Quad16DOFJointHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robot.quad_handler.QuadHandler" title="robot.quad_handler.QuadHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">robot.quad_handler.QuadHandler</span></code></a></p>
+<p>Class to operate with the handlers of the different joints and shapes of the robot in V-REP.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.quad_16DOF_handler.Quad16DOFJointHandler.get_joint_handlers">
+<span class="sig-name descname"><span class="pre">get_joint_handlers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/quad_16DOF_handler.html#Quad16DOFJointHandler.get_joint_handlers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.quad_16DOF_handler.Quad16DOFJointHandler.get_joint_handlers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the needed handlers of the robot joints.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.quad_16DOF_handler.Quad16DOFJointHandler.move_joints_to_position">
+<span class="sig-name descname"><span class="pre">move_joints_to_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">final_angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/quad_16DOF_handler.html#Quad16DOFJointHandler.move_joints_to_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.quad_16DOF_handler.Quad16DOFJointHandler.move_joints_to_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the joints of the robot to the target position.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-robot.quad_24DOF_handler"></span><dl class="py class">
+<dt class="sig sig-object py" id="robot.quad_24DOF_handler.Quad24DOFJointHandler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">robot.quad_24DOF_handler.</span></span><span class="sig-name descname"><span class="pre">Quad24DOFJointHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/quad_24DOF_handler.html#Quad24DOFJointHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.quad_24DOF_handler.Quad24DOFJointHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robot.quad_handler.QuadHandler" title="robot.quad_handler.QuadHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">robot.quad_handler.QuadHandler</span></code></a></p>
+<p>Class to operate with the handlers of the different joints and shapes of the robot in V-REP</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.quad_24DOF_handler.Quad24DOFJointHandler.get_joint_handlers">
+<span class="sig-name descname"><span class="pre">get_joint_handlers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/quad_24DOF_handler.html#Quad24DOFJointHandler.get_joint_handlers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.quad_24DOF_handler.Quad24DOFJointHandler.get_joint_handlers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the needed handlers of the robot joints.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.quad_24DOF_handler.Quad24DOFJointHandler.move_joints_to_position">
+<span class="sig-name descname"><span class="pre">move_joints_to_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">final_angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/quad_24DOF_handler.html#Quad24DOFJointHandler.move_joints_to_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.quad_24DOF_handler.Quad24DOFJointHandler.move_joints_to_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the joints of the robot to the target position.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-robot.hexapod_handler"></span><dl class="py class">
+<dt class="sig sig-object py" id="robot.hexapod_handler.HexapodJointHandler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">robot.hexapod_handler.</span></span><span class="sig-name descname"><span class="pre">HexapodJointHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/hexapod_handler.html#HexapodJointHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.hexapod_handler.HexapodJointHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robot.joint_handler.JointHandler" title="robot.joint_handler.JointHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">robot.joint_handler.JointHandler</span></code></a></p>
+<p>Class to operate with the handlers of the different joints and shapes of the robot in V-REP.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.hexapod_handler.HexapodJointHandler.get_joint_handlers">
+<span class="sig-name descname"><span class="pre">get_joint_handlers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/hexapod_handler.html#HexapodJointHandler.get_joint_handlers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.hexapod_handler.HexapodJointHandler.get_joint_handlers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the needed handlers of the robot joints.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.hexapod_handler.HexapodJointHandler.grow_legs">
+<span class="sig-name descname"><span class="pre">grow_legs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finalLength</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/hexapod_handler.html#HexapodJointHandler.grow_legs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.hexapod_handler.HexapodJointHandler.grow_legs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grow robot’s legs to final length</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>finalLength</strong> (<em>float</em>) – the length the robot’s legs will have after this method</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.hexapod_handler.HexapodJointHandler.move_joints_to_position">
+<span class="sig-name descname"><span class="pre">move_joints_to_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">final_angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/hexapod_handler.html#HexapodJointHandler.move_joints_to_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.hexapod_handler.HexapodJointHandler.move_joints_to_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the joints of the robot to the target position.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-robot.octopod_handler"></span><dl class="py class">
+<dt class="sig sig-object py" id="robot.octopod_handler.OctopodJointHandler">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">robot.octopod_handler.</span></span><span class="sig-name descname"><span class="pre">OctopodJointHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/octopod_handler.html#OctopodJointHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.octopod_handler.OctopodJointHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#robot.joint_handler.JointHandler" title="robot.joint_handler.JointHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">robot.joint_handler.JointHandler</span></code></a></p>
+<p>Class to operate with the handlers of the different joints and shapes of the robot in V-REP.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.octopod_handler.OctopodJointHandler.get_joint_handlers">
+<span class="sig-name descname"><span class="pre">get_joint_handlers</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/octopod_handler.html#OctopodJointHandler.get_joint_handlers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.octopod_handler.OctopodJointHandler.get_joint_handlers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the needed handlers of the robot joints.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.octopod_handler.OctopodJointHandler.grow_legs">
+<span class="sig-name descname"><span class="pre">grow_legs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">finalLength</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/octopod_handler.html#OctopodJointHandler.grow_legs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.octopod_handler.OctopodJointHandler.grow_legs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grow robot’s legs to final length</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>finalLength</strong> (<em>float</em>) – the length the robot’s legs will have after this method</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robot.octopod_handler.OctopodJointHandler.move_joints_to_position">
+<span class="sig-name descname"><span class="pre">move_joints_to_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">final_angle</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/robot/octopod_handler.html#OctopodJointHandler.move_joints_to_position"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#robot.octopod_handler.OctopodJointHandler.move_joints_to_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the joints of the robot to the target position.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="util.html" class="btn btn-neutral float-left" title="Util" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Nombre autor.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

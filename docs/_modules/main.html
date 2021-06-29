@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>main &mdash; Morphological development 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Morphological development
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../app.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiment.html">Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../config.html">Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../robot.html">Robot settings</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Morphological development</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>main</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for main</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Main script to launch the experiments.</span>
+
+<span class="sd">usage: python main.py [-h] [--port PORT] [--test TEST] [--type TYPE] robot</span>
+
+<span class="sd">positional arguments:</span>
+<span class="sd">  robot        Robot model. Accepted values: quad8DOF, quad16DOF, quad24DOF, hexapod, octopod</span>
+
+<span class="sd">optional arguments:</span>
+<span class="sd">  -h, --help   show this help message and exit</span>
+<span class="sd">  --port PORT  Port number to connect to Simulator</span>
+<span class="sd">  --test TEST  Folder name containing the test data</span>
+<span class="sd">  --type TYPE  Experiment type. Accepted values:nodev, growth</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">argparse</span>
+
+<span class="kn">from</span> <span class="nn">morph_dev_experiment</span> <span class="kn">import</span> <span class="n">MorphologicalDevExperiment</span>
+
+<span class="kn">from</span> <span class="nn">config.evolution_config</span> <span class="kn">import</span> <span class="n">EvolutionConfig</span>
+<span class="kn">from</span> <span class="nn">config.evolution_config_growth</span> <span class="kn">import</span> <span class="n">EvolutionConfigGrowth</span>
+<span class="kn">from</span> <span class="nn">config.quad_8DOF_experiment_data</span> <span class="kn">import</span> <span class="n">Quad8DOFExperimentData</span>
+<span class="kn">from</span> <span class="nn">config.quad_16DOF_experiment_data</span> <span class="kn">import</span> <span class="n">Quad16DOFExperimentData</span>
+<span class="kn">from</span> <span class="nn">config.quad_16DOF_experiment_data</span> <span class="kn">import</span> <span class="n">Quad16DOFExperimentData</span>
+<span class="kn">from</span> <span class="nn">config.quad_24DOF_experiment_data</span> <span class="kn">import</span> <span class="n">Quad24DOFExperimentData</span>
+<span class="kn">from</span> <span class="nn">config.hexapod_experiment_data</span> <span class="kn">import</span> <span class="n">HexapodExperimentData</span>
+<span class="kn">from</span> <span class="nn">config.octopod_experiment_data</span> <span class="kn">import</span> <span class="n">OctopodExperimentData</span>
+
+
+<span class="kn">from</span> <span class="nn">robot.quad_8DOF_handler</span> <span class="kn">import</span> <span class="n">Quad8DOFJointHandler</span>
+<span class="kn">from</span> <span class="nn">robot.quad_16DOF_handler</span> <span class="kn">import</span> <span class="n">Quad16DOFJointHandler</span>
+<span class="kn">from</span> <span class="nn">robot.quad_24DOF_handler</span> <span class="kn">import</span> <span class="n">Quad24DOFJointHandler</span>
+<span class="kn">from</span> <span class="nn">robot.hexapod_handler</span> <span class="kn">import</span> <span class="n">HexapodJointHandler</span>
+<span class="kn">from</span> <span class="nn">robot.octopod_handler</span> <span class="kn">import</span> <span class="n">OctopodJointHandler</span>
+
+<span class="kn">import</span> <span class="nn">config</span>
+<span class="kn">import</span> <span class="nn">robot</span>
+
+<span class="kn">from</span> <span class="nn">util.vrep_util</span> <span class="kn">import</span> <span class="n">VREPSimulatorFacade</span>
+
+
+<div class="viewcode-block" id="check_arguments"><a class="viewcode-back" href="../app.html#main.check_arguments">[docs]</a><span class="k">def</span> <span class="nf">check_arguments</span><span class="p">(</span><span class="n">available_robots</span><span class="p">,</span> <span class="n">available_types</span><span class="p">,</span> <span class="n">default_port</span><span class="o">=</span><span class="mi">19997</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Parse the script arguments.</span>
+
+<span class="sd">    If a port number is received as an argument, then this number is used to establish the connection</span>
+<span class="sd">    to V-REP, otherwise, a default port value is set.</span>
+
+<span class="sd">    Setting the port number to the V-REP connection allows different V-REP experiments to be run</span>
+<span class="sd">    on the same computer. The port number is also used as a seed generator for random values.</span>
+
+<span class="sd">    If a test folder is received as an argument, then this folder is used to load the experiment in test mode,</span>
+<span class="sd">    i.e. the simulation is launched with the best individual saved from a previous experiment.</span>
+
+<span class="sd">    :param available_robots: List of available robots</span>
+<span class="sd">    :param available_types: List of available types of expermiments</span>
+<span class="sd">    :param default_port: The default port for the connection if no other one if received as an argument</span>
+
+<span class="sd">    :type available_robots: list</span>
+<span class="sd">    :type available_types: list</span>
+<span class="sd">    :type default_port: integer</span>
+
+<span class="sd">    :return: port_connection: the port number</span>
+<span class="sd">    :return: test: indicates if the mode is test (test = True) or learning (test = False)</span>
+<span class="sd">    :return: robot: the robot model</span>
+<span class="sd">    :return: type: the experiment type (growth or no devel)</span>
+<span class="sd">    :rtype: (integer, bool, string, string)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">robot_help_message</span> <span class="o">=</span> <span class="s2">&quot;Robot model. Accepted values: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">available_robots</span><span class="p">)</span>
+    <span class="n">type_help_message</span> <span class="o">=</span> <span class="s2">&quot;Experiment type. Accepted values:&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">available_types</span><span class="p">)</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--port&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Port number to connect to Simulator&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--test&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Folder name containing the test data&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--type&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">type_help_message</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;robot&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">robot_help_message</span><span class="p">)</span>
+
+    <span class="n">arg</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">arg</span><span class="o">.</span><span class="n">port</span><span class="p">:</span>
+        <span class="n">port_connection</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">port</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Port:&quot;</span><span class="p">,</span> <span class="n">port_connection</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">port_connection</span> <span class="o">=</span> <span class="n">default_port</span>
+
+    <span class="n">test</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">arg</span><span class="o">.</span><span class="n">test</span><span class="p">:</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">test</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;True&quot;</span>
+
+    <span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;nodev&quot;</span>
+    <span class="k">if</span> <span class="n">arg</span><span class="o">.</span><span class="n">type</span><span class="p">:</span>
+        <span class="nb">type</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">type</span>
+
+    <span class="n">robot</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">robot</span>
+
+    <span class="k">return</span> <span class="n">port_connection</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">robot</span><span class="p">,</span> <span class="nb">type</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Check script arguments</span>
+    <span class="n">available_robots</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;quad8DOF&quot;</span><span class="p">,</span> <span class="s2">&quot;quad16DOF&quot;</span><span class="p">,</span> <span class="s2">&quot;quad24DOF&quot;</span><span class="p">,</span> <span class="s2">&quot;hexapod&quot;</span><span class="p">,</span> <span class="s2">&quot;octopod&quot;</span><span class="p">]</span>
+    <span class="n">available_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nodev&quot;</span><span class="p">,</span> <span class="s2">&quot;growth&quot;</span><span class="p">]</span>
+    <span class="n">port_connection</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">robot</span><span class="p">,</span> <span class="n">exp_type</span> <span class="o">=</span> <span class="n">check_arguments</span><span class="p">(</span><span class="n">available_robots</span><span class="p">,</span> <span class="n">available_types</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">robot</span> <span class="ow">in</span> <span class="n">available_robots</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Experiment not available: &quot;</span><span class="p">,</span> <span class="n">robot</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Connect to the VREP simulator</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="n">VREPSimulatorFacade</span><span class="p">(</span><span class="n">port_connection</span><span class="p">)</span>
+        <span class="n">sim</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+
+        <span class="c1"># Get configuration classes</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">exp_type</span> <span class="ow">in</span> <span class="n">available_types</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Experiment type not available: &quot;</span><span class="p">,</span> <span class="n">exp_type</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">growth</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">exp_type</span> <span class="o">==</span> <span class="s2">&quot;growth&quot;</span><span class="p">:</span>
+                <span class="n">config</span> <span class="o">=</span> <span class="n">EvolutionConfigGrowth</span><span class="p">()</span>
+                <span class="n">growth</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">config</span> <span class="o">=</span> <span class="n">EvolutionConfig</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;quad8DOF&quot;</span><span class="p">:</span>
+                <span class="n">handler</span> <span class="o">=</span> <span class="n">Quad8DOFJointHandler</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">Quad8DOFExperimentData</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">generations</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;quad16DOF&quot;</span><span class="p">:</span>
+                <span class="n">handler</span> <span class="o">=</span> <span class="n">Quad16DOFJointHandler</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">Quad16DOFExperimentData</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">generations</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;quad24DOF&quot;</span><span class="p">:</span>
+                <span class="n">handler</span> <span class="o">=</span> <span class="n">Quad24DOFJointHandler</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">Quad24DOFExperimentData</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">generations</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;hexapod&quot;</span><span class="p">:</span>
+                <span class="n">handler</span> <span class="o">=</span> <span class="n">HexapodJointHandler</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">HexapodExperimentData</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">generations</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;octopod&quot;</span><span class="p">:</span>
+                <span class="n">handler</span> <span class="o">=</span> <span class="n">OctopodJointHandler</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">OctopodExperimentData</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">generations</span><span class="p">)</span>
+
+            <span class="c1"># Run evolution</span>
+            <span class="n">experiment</span> <span class="o">=</span> <span class="n">MorphologicalDevExperiment</span><span class="p">(</span><span class="n">port_connection</span><span class="p">,</span> <span class="n">sim</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">handler</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">growth</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">test</span><span class="p">:</span>
+                <span class="n">test_folder</span> <span class="o">=</span> <span class="n">robot</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">exp_type</span>
+                <span class="n">experiment</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="n">test_folder</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">experiment</span><span class="o">.</span><span class="n">run_evolution</span><span class="p">()</span>
+
+            <span class="c1"># Connect from the VREP simulator</span>
+            <span class="n">sim</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Nombre autor.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

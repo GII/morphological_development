@@ -1,0 +1,321 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>util.vrep_util &mdash; Morphological development 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Morphological development
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../app.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experiment.html">Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../config.html">Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robot.html">Robot settings</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Morphological development</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>util.vrep_util</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for util.vrep_util</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;lib&quot;</span><span class="p">))</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">vrep</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------------------------------------------&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&quot;vrep.py&quot; could not be imported. This means very probably that&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;either &quot;vrep.py&quot; or the remoteApi library could not be found.&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Make sure both are in the same folder as this file,&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;or appropriately adjust the file &quot;vrep.py&quot;&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------------------------------------------------------&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="VREPSimulatorFacade"><a class="viewcode-back" href="../../util.html#util.vrep_util.VREPSimulatorFacade">[docs]</a><span class="k">class</span> <span class="nc">VREPSimulatorFacade</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;VREP Simulator Facade&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">port</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">port_connection</span> <span class="o">=</span> <span class="n">port</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clientID</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<div class="viewcode-block" id="VREPSimulatorFacade.connect"><a class="viewcode-back" href="../../util.html#util.vrep_util.VREPSimulatorFacade.connect">[docs]</a>    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Open the connection to V-REP.</span>
+
+<span class="sd">        All the previous connections are closed before establish the connection.</span>
+
+<span class="sd">        :param port_connection: The port number to establish the connection</span>
+<span class="sd">        :type port_connection: integer</span>
+
+<span class="sd">        :return: the V-REP Client ID</span>
+<span class="sd">        :rtype: integer</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program started&quot;</span><span class="p">)</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxFinish</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># just in case, close all opened connections</span>
+        <span class="n">clientID</span> <span class="o">=</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simxStart</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">port_connection</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Connect to V-REP</span>
+        <span class="k">if</span> <span class="n">clientID</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connected to remote API server&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulation Started&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">clientID</span> <span class="o">=</span> <span class="n">clientID</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Failed connecting to remote API server&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VREPSimulatorFacade.disconnect"><a class="viewcode-back" href="../../util.html#util.vrep_util.VREPSimulatorFacade.disconnect">[docs]</a>    <span class="k">def</span> <span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Close the connection.&quot;&quot;&quot;</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxFinish</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VREPSimulatorFacade.start_simulation"><a class="viewcode-back" href="../../util.html#util.vrep_util.VREPSimulatorFacade.start_simulation">[docs]</a>    <span class="k">def</span> <span class="nf">start_simulation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Start the simulation.&quot;&quot;&quot;</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxSynchronous</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxStartSimulation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">,</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simx_opmode_blocking</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VREPSimulatorFacade.stop_simulation"><a class="viewcode-back" href="../../util.html#util.vrep_util.VREPSimulatorFacade.stop_simulation">[docs]</a>    <span class="k">def</span> <span class="nf">stop_simulation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stop the simulation.&quot;&quot;&quot;</span>
+        <span class="n">retCode</span> <span class="o">=</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simxStopSimulation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">,</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simx_opmode_blocking</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">retCode</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">retCode</span> <span class="o">=</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simxStopSimulation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">,</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simx_opmode_blocking</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="VREPSimulatorFacade.get_object_position_buffer_mode"><a class="viewcode-back" href="../../util.html#util.vrep_util.VREPSimulatorFacade.get_object_position_buffer_mode">[docs]</a>    <span class="k">def</span> <span class="nf">get_object_position_buffer_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">objectHandle</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the absolute position on an object.</span>
+
+<span class="sd">        :param objectHandle: the handle of the object</span>
+<span class="sd">        :type object: integer</span>
+
+<span class="sd">        :return: the position on the object</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># relativeToObjectHandle = -1: indicates the</span>
+        <span class="n">retCode</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simxGetObjectPosition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">,</span> <span class="n">objectHandle</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simx_opmode_buffer</span><span class="p">)</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxSynchronousTrigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">)</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxGetPingTime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">position</span></div>
+
+<div class="viewcode-block" id="VREPSimulatorFacade.get_object_position_stream_mode"><a class="viewcode-back" href="../../util.html#util.vrep_util.VREPSimulatorFacade.get_object_position_stream_mode">[docs]</a>    <span class="k">def</span> <span class="nf">get_object_position_stream_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the absolute position on an object with API operation mode =  streaming.</span>
+
+<span class="sd">        API operation mode streaming is the recomended mode for the firts call. The following calls should be use  operation mode buffer.</span>
+
+<span class="sd">        :param objectHandle: the handle of the object</span>
+<span class="sd">        :type object: integer</span>
+
+<span class="sd">        :return: the position on the object</span>
+<span class="sd">        :rtype: list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">retCode</span><span class="p">,</span> <span class="n">position</span> <span class="o">=</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simxGetObjectPosition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">,</span> <span class="nb">object</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simx_opmode_streaming</span><span class="p">)</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxSynchronousTrigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">)</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxGetPingTime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">position</span></div>
+
+    <span class="k">def</span> <span class="nf">set_object_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxSetObjectPosition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">,</span> <span class="nb">object</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simx_opmode_oneshot</span><span class="p">)</span>
+
+<div class="viewcode-block" id="VREPSimulatorFacade.get_object_handle"><a class="viewcode-back" href="../../util.html#util.vrep_util.VREPSimulatorFacade.get_object_handle">[docs]</a>    <span class="k">def</span> <span class="nf">get_object_handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the handle of an object.</span>
+
+<span class="sd">        :param object_name: the name of the object</span>
+<span class="sd">        :type object: string</span>
+
+<span class="sd">        :return: the handle of the object</span>
+<span class="sd">        :rtype: integer</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">object</span> <span class="o">=</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simxGetObjectHandle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">,</span> <span class="n">object_name</span><span class="p">,</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simx_opmode_blocking</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">object</span></div>
+
+    <span class="k">def</span> <span class="nf">set_joint_target_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">joint</span><span class="p">,</span> <span class="n">target_position</span><span class="p">):</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxSetJointTargetPosition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">,</span> <span class="n">joint</span><span class="p">,</span> <span class="n">target_position</span><span class="p">,</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simx_opmode_oneshot</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">set_joint_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">joint</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxSetJointPosition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">,</span> <span class="n">joint</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">vrep</span><span class="o">.</span><span class="n">simx_opmode_oneshot</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">sync_trigger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxSynchronousTrigger</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">)</span>
+        <span class="n">vrep</span><span class="o">.</span><span class="n">simxGetPingTime</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clientID</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Nombre autor.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

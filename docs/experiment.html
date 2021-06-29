@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Experiment &mdash; Morphological development 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Config" href="config.html" />
+    <link rel="prev" title="Main" href="app.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Morphological development
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="app.html">Main</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="robot.html">Robot settings</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Morphological development</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Experiment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/experiment.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-morph_dev_experiment">
+<span id="experiment"></span><h1>Experiment<a class="headerlink" href="#module-morph_dev_experiment" title="Permalink to this headline">¶</a></h1>
+<p>This module contains the class to instance for running morphogical development experiments.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">morph_dev_experiment.</span></span><span class="sig-name descname"><span class="pre">MorphologicalDevExperiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">growth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This class represents a  morphological development experiment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>port</strong> (<em>string</em>) – The port number used to connect to the simulator. It’s also used as seed generator for random values.</p></li>
+<li><p><strong>sim</strong> (<a class="reference internal" href="util.html#util.vrep_util.VREPSimulatorFacade" title="util.vrep_util.VREPSimulatorFacade"><em>VREPSimulatorFacade</em></a>) – The simulatior facade object with the methods used in the experiments</p></li>
+<li><p><strong>config</strong> (<a class="reference internal" href="config.html#config.evolution_config.EvolutionConfig" title="config.evolution_config.EvolutionConfig"><em>EvolutionConfig</em></a>) – Parameter for the evolution configuration.</p></li>
+<li><p><strong>handler</strong> (<a class="reference internal" href="robot.html#robot.joint_handler.JointHandler" title="robot.joint_handler.JointHandler"><em>JointHandler</em></a>) – The joint handlers of the robot with which the experiment is carried out.</p></li>
+<li><p><strong>data</strong> (<a class="reference internal" href="config.html#config.experiment_data.ExperimentData" title="config.experiment_data.ExperimentData"><em>ExperimentData</em></a>) – Class to store relevant data during the evolution</p></li>
+<li><p><strong>growth</strong> – Indicates the type of the experiment(growth = True: a growth experiment, growth = Fasle: a non develpment experiment)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.create_data_folder">
+<span class="sig-name descname"><span class="pre">create_data_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.create_data_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.create_data_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a folder to save the relevant data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.draw_best_nn">
+<span class="sig-name descname"><span class="pre">draw_best_nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">winner_genome</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.draw_best_nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.draw_best_nn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the NN of the best individual.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.ev_single_genome">
+<span class="sig-name descname"><span class="pre">ev_single_genome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genome</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.ev_single_genome"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.ev_single_genome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the fitness value for an individual.</p>
+<p>This method returns the distance travelled by the robot in straight line for each individual (genotype).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.experiment_configuration">
+<span class="sig-name descname"><span class="pre">experiment_configuration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.experiment_configuration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.experiment_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set some configuration for the expermiment.</p>
+<p>This configuration is used both in the full experiment run and in test mode.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.load_robot">
+<span class="sig-name descname"><span class="pre">load_robot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.load_robot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.load_robot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all the needed handlers of the robot and start the simulation.</p>
+<p>Although the model of the robot is not loaded, this function is utilized for getting all the needed
+handlers of the robot, as well as activating some data stream and starting the simulation. The simulation
+is launched in synchronous mode.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.load_winner_genome">
+<span class="sig-name descname"><span class="pre">load_winner_genome</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.load_winner_genome"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.load_winner_genome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the winner genome data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.run_evolution">
+<span class="sig-name descname"><span class="pre">run_evolution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.run_evolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.run_evolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the evolution and serializes the result.</p>
+<p>If the data folder to save the results can’t be created the expermient is not executed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.run_population_evolution">
+<span class="sig-name descname"><span class="pre">run_population_evolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genIndex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.run_population_evolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.run_population_evolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evolve the population.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.run_test">
+<span class="sig-name descname"><span class="pre">run_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">test_folder</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.run_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.run_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the experiment only with one individual, the best one saved in a previous expermiment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>test_folder</strong> (<em>string</em>) – The name of the folder that contains the data of the individual to evolve.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.serialize_best_individual">
+<span class="sig-name descname"><span class="pre">serialize_best_individual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">best_individual</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.serialize_best_individual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.serialize_best_individual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialize to a file the winner genome.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>best_individual</strong> – The best individual to serialize</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the V-REP Client ID</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>integer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.set_data_folder_name">
+<span class="sig-name descname"><span class="pre">set_data_folder_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.set_data_folder_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.set_data_folder_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set then name of the folder to save the experiments.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="config.html" class="btn btn-neutral float-right" title="Config" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="app.html" class="btn btn-neutral float-left" title="Main" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Nombre autor.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

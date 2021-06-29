@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>config.evolution_config &mdash; Morphological development 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Morphological development
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../app.html">Main</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experiment.html">Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../config.html">Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../util.html">Util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../robot.html">Robot settings</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Morphological development</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>config.evolution_config</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for config.evolution_config</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">MultiNEAT</span> <span class="k">as</span> <span class="nn">NEAT</span>
+
+
+<div class="viewcode-block" id="EvolutionConfig"><a class="viewcode-back" href="../../config.html#config.evolution_config.EvolutionConfig">[docs]</a><span class="k">class</span> <span class="nc">EvolutionConfig</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This class contains the evolution parameter settings&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result_folder</span> <span class="o">=</span> <span class="s2">&quot;output&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_folder</span> <span class="o">=</span> <span class="s2">&quot;testdata&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">secondsTime</span> <span class="o">=</span> <span class="mi">30</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numEntries</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">generations</span> <span class="o">=</span> <span class="mi">300</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_generations</span> <span class="o">=</span> <span class="mi">300</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">populationSize</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">startExpe</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">experiments</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="mf">2.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">omega</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_arm</span> <span class="o">=</span> <span class="mf">90.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_arm</span> <span class="o">=</span> <span class="o">-</span><span class="mf">90.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_leg</span> <span class="o">=</span> <span class="mf">90.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_leg</span> <span class="o">=</span> <span class="o">-</span><span class="mf">90.0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">neat_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_NEAT_parameters</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">populationSize</span><span class="p">)</span>
+
+<div class="viewcode-block" id="EvolutionConfig.set_NEAT_parameters"><a class="viewcode-back" href="../../config.html#config.evolution_config.EvolutionConfig.set_NEAT_parameters">[docs]</a>    <span class="k">def</span> <span class="nf">set_NEAT_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">populationSize</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Set configuration parameters of the NEAT algorithm.</span>
+
+<span class="sd">        :param populationSize: the size of the population for the evolution</span>
+<span class="sd">        :type populationSize: integer</span>
+
+<span class="sd">        :return: The parameters for the NEAT algorithm.</span>
+<span class="sd">        :rtype: NEAT.Parameters</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Configuration parameters of the NEAT algorithm</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">NEAT</span><span class="o">.</span><span class="n">Parameters</span><span class="p">()</span>
+
+        <span class="c1"># Basic parameters</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">PopulationSize</span> <span class="o">=</span> <span class="n">populationSize</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">DynamicCompatibility</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MinSpecies</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MaxSpecies</span> <span class="o">=</span> <span class="mi">7</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">InnovationsForever</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># GA Parameters</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">YoungAgeTreshold</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">YoungAgeFitnessBoost</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">SpeciesDropoffAge</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">StagnationDelta</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">OldAgeTreshold</span> <span class="o">=</span> <span class="mi">30</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">OldAgePenalty</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">KillWorstAge</span> <span class="o">=</span> <span class="mi">40</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">SurvivalRate</span> <span class="o">=</span> <span class="mf">0.3</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">CrossoverRate</span> <span class="o">=</span> <span class="mf">0.6</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">KillWorstSpeciesEach</span> <span class="o">=</span> <span class="mi">20</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">OverallMutationRate</span> <span class="o">=</span> <span class="mf">0.1</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MultipointCrossoverRate</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">RouletteWheelSelection</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">InterspeciesCrossoverRate</span> <span class="o">=</span> <span class="mf">0.001</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">DetectCompetetiveCoevolutionStagnation</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1"># Structural Mutation parameters</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">RecurrentProb</span> <span class="o">=</span> <span class="mf">0.1</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">SplitRecurrent</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MutateAddLinkProb</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">RecurrentLoopProb</span> <span class="o">=</span> <span class="mf">0.01</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MutateRemLinkProb</span> <span class="o">=</span> <span class="mf">0.01</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MutateAddNeuronProb</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">SplitLoopedRecurrent</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MutateAddLinkFromBiasProb</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MutateRemSimpleNeuronProb</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="c1"># Parameter Mutation parameters</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MutateWeightsProb</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MutateWeightsSevereProb</span> <span class="o">=</span> <span class="mf">0.1</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">WeightMutationRate</span> <span class="o">=</span> <span class="mf">0.9</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">WeightMutationMaxPower</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">WeightReplacementMaxPower</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MutateActivationAProb</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MutateActivationBProb</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">ActivationAMutationMaxPower</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">ActivationBMutationMaxPower</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">TimeConstantMutationMaxPower</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">BiasMutationMaxPower</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MutateNeuronTimeConstantsProb</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MutateNeuronBiasesProb</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+        <span class="n">params</span><span class="o">.</span><span class="n">MaxWeight</span> <span class="o">=</span> <span class="mf">10.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MinNeuronBias</span> <span class="o">=</span> <span class="o">-</span><span class="mf">10.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MaxNeuronBias</span> <span class="o">=</span> <span class="mf">10.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">EliteFraction</span> <span class="o">=</span> <span class="mf">0.02</span>
+
+        <span class="n">params</span><span class="o">.</span><span class="n">ExcessCoeff</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">DisjointCoeff</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">BiasDiffCoeff</span> <span class="o">=</span> <span class="mf">2.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">CompatTreshold</span> <span class="o">=</span> <span class="mf">2.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">WeightDiffCoeff</span> <span class="o">=</span> <span class="mf">2.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">ActivationADiffCoeff</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">ActivationBDiffCoeff</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">TimeConstantDiffCoeff</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">CompatTresholdModifier</span> <span class="o">=</span> <span class="mf">0.1</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">ActivationFunctionDiffCoeff</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">CompatTreshChangeInterval_Generations</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="n">params</span><span class="o">.</span><span class="n">MinActivationA</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MaxActivationA</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+        <span class="n">params</span><span class="o">.</span><span class="n">MinActivationB</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">MaxActivationB</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="n">params</span><span class="o">.</span><span class="n">ActivationFunction_Tanh_Prob</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">ActivationFunction_SignedStep_Prob</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">ActivationFunction_SignedSigmoid_Prob</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">ActivationFunction_UnsignedSigmoid_Prob</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+        <span class="k">return</span> <span class="n">params</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Nombre autor.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
