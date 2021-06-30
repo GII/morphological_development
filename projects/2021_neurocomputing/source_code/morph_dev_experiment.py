@@ -1,5 +1,6 @@
 """This module contains the class to instance for running morphogical development experiments."""
 
+
 import os, sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".", "lib"))
@@ -72,7 +73,10 @@ class MorphologicalDevExperiment(object):
     def ev_single_genome(self, genome):
         """Return the fitness value for an individual.
 
-        This method returns the distance travelled by the robot in straight line for each individual (genotype).
+        :param genome: The individal to evolve
+
+        :return: the distance travelled by the robot in straight line for each individual (genotype)
+        :rtype: Genome
         """
         # Getting the robot handlers and starting the simulation
         self.load_robot()
@@ -107,7 +111,11 @@ class MorphologicalDevExperiment(object):
         return position[0]
 
     def run_population_evolution(self, genIndex):
-        """Evolve the population."""
+        """Evolve the population.
+
+        (best_generation_ever, best_index_ever, best_gs[len(best_gs) - 1], best_fit_ever)
+
+        """
         # Definition of the features of each genome of the population and creation of the population.
         inputsNeuron = self.config.numEntries + 1
         outputsNeuron = self.handler.joint_number
@@ -191,7 +199,13 @@ class MorphologicalDevExperiment(object):
         return directory00
 
     def create_data_folder(self):
-        """Create a folder to save the relevant data."""
+        """Create a folder to save the relevant data.
+
+        If the data folder can't be created, an error message is shown
+
+        :return: error (True: if the folder couldn't be created, otherwise False)
+        :rtype: boolean
+        """
         error = False
         self.datah.directory = self.set_data_folder_name()
         try:
@@ -202,16 +216,15 @@ class MorphologicalDevExperiment(object):
 
         return error
 
-    def serialize_best_individual(self, best_individual):
+    def serialize_best_individual(self, winner_genome):
         """Serialize to a file the winner genome.
 
         :param best_individual: The best individual to serialize
-        :type port_connection: integer
+        :type best_individual: Genome
 
-        :return: the V-REP Client ID
-        :rtype: integer
+        :return: error (True: if the file couldn't be created, otherwise False)
+        :rtype: boolean
         """
-        winner_genome = best_individual[2]
         error = False
         try:
             # saving the genome of the best individual obtained
@@ -301,7 +314,8 @@ class MorphologicalDevExperiment(object):
             self.experiment_configuration()
             # Run the evolution loop and get the best individual
             best_individual = self.run_population_evolution(self.port_connection)
-            error = self.serialize_best_individual(best_individual)
+            winner_genome = best_individual[2]
+            error = self.serialize_best_individual(winner_genome)
             if error:
                 print("Error saving the best individual in a file.")
             self.sim.stop_simulation()
