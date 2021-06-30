@@ -23,7 +23,7 @@ class ExperimentData(object):
         """Serialize saved data to a file."""
         saveData = [self.average_value, self.median_value, self.max_fitness_value]
 
-        text01 = self.directory + "/" + "Datos_MediaMediana_array_de_" + str(0) + ".txt"
+        text01 = self.directory + "/" + "MeanMedian_Data_array_" + str(0) + ".txt"
         file = open(text01, "wb")
         pickle.dump(saveData, file)
         file.close()
