@@ -2,9 +2,7 @@ from robot.joint_handler import JointHandler
 
 
 class OctopodJointHandler(JointHandler):
-    """
-    Class to operate with the handlers of the different joints and shapes of the robot in V-REP.
-    """
+    """Class to operate with the handlers to operate with an octopod robot."""
 
     def __init__(self, sim):
         super().__init__(sim)

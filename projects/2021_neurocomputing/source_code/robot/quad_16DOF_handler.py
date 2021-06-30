@@ -3,7 +3,7 @@ from robot.quad_handler import QuadHandler
 
 class Quad16DOFJointHandler(QuadHandler):
     """
-    Class to operate with the handlers of the different joints and shapes of the robot in V-REP.
+    This class represents the handlers to operate with a quad robot with 16 Degrees of Freedom.
     """
 
     def __init__(self, sim):

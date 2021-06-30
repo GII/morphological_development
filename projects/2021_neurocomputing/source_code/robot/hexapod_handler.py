@@ -3,7 +3,7 @@ from robot.joint_handler import JointHandler
 
 class HexapodJointHandler(JointHandler):
     """
-    Class to operate with the handlers of the different joints and shapes of the robot in V-REP.
+    Class to operate with the handlers to operate with an hexapod robot
     """
 
     def __init__(self, sim):

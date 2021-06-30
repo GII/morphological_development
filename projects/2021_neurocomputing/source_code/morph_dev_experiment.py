@@ -113,7 +113,11 @@ class MorphologicalDevExperiment(object):
     def run_population_evolution(self, genIndex):
         """Evolve the population.
 
-        (best_generation_ever, best_index_ever, best_gs[len(best_gs) - 1], best_fit_ever)
+        :param genIndex: Number
+        :rtype: integer: Seed for the random generation when creating the population
+
+        :return: Best generation number, best individual index, best individual and best fitness
+        :rtype: integer, integer, Genome, float
 
         """
         # Definition of the features of each genome of the population and creation of the population.
@@ -132,6 +136,7 @@ class MorphologicalDevExperiment(object):
             0,
         )
 
+        # Genone, NEAT config parameters, RandomizeWeights = True,  RandonRange = 1.0, RNG_seed = genIndex
         pop = NEAT.Population(genome, self.config.neat_params, True, 1.0, genIndex)
         pop.RNG.Seed(self.port_connection)
         print("NumLinks:", genome.NumLinks())
@@ -185,7 +190,11 @@ class MorphologicalDevExperiment(object):
         return (best_generation_ever, best_index_ever, best_gs[len(best_gs) - 1], best_fit_ever)
 
     def set_data_folder_name(self):
-        """Set then name of the folder to save the experiments."""
+        """Set then name of the folder to save the experiments.
+
+        :return: The forder path
+        :rtype: string
+        """
         directory00 = (
             self.config.result_folder
             + os.path.sep
@@ -238,7 +247,11 @@ class MorphologicalDevExperiment(object):
         return error
 
     def load_winner_genome(self):
-        """Load the winner genome data."""
+        """Load the winner genome data from file with pickle.
+
+        :return: the winner genome and error (True: if the file couldn't be created, otherwise False)
+        :rtype: Genome, boolean
+        """
         text = (
             self.config.test_folder
             + os.path.sep
@@ -276,7 +289,11 @@ class MorphologicalDevExperiment(object):
         self.datah.set_output_range(arm_range, leg_range)
 
     def draw_best_nn(self, winner_genome):
-        """Draw the NN of the best individual."""
+        """Draw the NN of the best individual.
+
+        :param winner_genome: The best individual
+        :type best_individual: Genome
+        """
         net = NEAT.NeuralNetwork()
         winner_genome.BuildPhenotype(net)
         img = np.zeros((500, 500, 3), dtype=np.uint8)

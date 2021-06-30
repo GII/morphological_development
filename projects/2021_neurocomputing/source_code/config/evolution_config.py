@@ -9,9 +9,9 @@ class EvolutionConfig(object):
         self.test_folder = "testdata"
         self.secondsTime = 30
         self.numEntries = 1
-        self.generations = 300
+        self.generations = 2  # 300
         self.test_generations = 300
-        self.populationSize = 50
+        self.populationSize = 2  # 50
         self.startExpe = 0
         self.experiments = 1
 
