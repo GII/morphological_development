@@ -2,7 +2,7 @@
 Morphological development 
 =========================
 
-The "morphological development" repository is dedicated to present the work in the field carried out by the researchers and 
+The "morphological development" `repository <https://github.com/GII/morphological_development>`_ is dedicated to present the work in the field carried out by the researchers and 
 collaborators of the `Integrated Group for Engineering Research <http://www.gii.udc.es/?id=3>`_.
  
 The work in the field performed on the research group focuses on understanding the mechanisms behind why morphological development 
