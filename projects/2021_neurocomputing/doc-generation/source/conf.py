@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath("../../source_code"))
 # -- Project information -----------------------------------------------------
 
 project = "Morphological development"
-copyright = "2021"
+copyright = "2021, Martín Naya. Last updated on July 1, 2021"
 author = "Martín Naya"
 
 # The full version, including alpha/beta/rc tags
