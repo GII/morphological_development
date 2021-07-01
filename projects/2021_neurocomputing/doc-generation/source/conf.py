@@ -20,8 +20,8 @@ sys.path.insert(0, os.path.abspath("../../source_code"))
 # -- Project information -----------------------------------------------------
 
 project = "Morphological development"
-copyright = "2021, Nombre autor"
-author = "Nombre autor"
+copyright = "2021"
+author = "Martín Naya"
 
 # The full version, including alpha/beta/rc tags
 release = "0.1"
@@ -56,6 +56,6 @@ html_theme = "sphinx_rtd_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 
-html_static_path = ["_static"]
+# html_static_path = ["_static"]
 
 # html_logo = "_static/logo.png"
