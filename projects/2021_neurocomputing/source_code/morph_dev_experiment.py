@@ -1,3 +1,25 @@
+#############################################################################
+#
+#    Copyright (C) 2020 Martín Naya
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU  General Public License
+#    along with this program.  If not, see < http:#www.gnu.org/licenses/ >.
+#
+#    Contact info:
+#
+#    Martín Naya < martin.naya@udc.es >
+#############################################################################
+
 """This module contains the class to instance for running morphogical development experiments."""
 
 
@@ -15,6 +37,8 @@ import cv2
 import MultiNEAT as NEAT
 from MultiNEAT import EvaluateGenomeList_Serial
 
+from config.experiment_type import ExperimentType
+
 
 class MorphologicalDevExperiment(object):
     """This class represents a  morphological development experiment.
@@ -24,24 +48,24 @@ class MorphologicalDevExperiment(object):
     :param config: Parameter for the evolution configuration.
     :param handler: The joint handlers of the robot with which the experiment is carried out.
     :param data: Class to store relevant data during the evolution
-    :param growth: Indicates the type of the experiment(growth = True: a growth experiment, growth = Fasle: a non develpment experiment)
+    :param experiment_type: Indicates the type of the experiment
 
     :type port: string
     :type sim: VREPSimulatorFacade
     :type config: EvolutionConfig
     :type handler: JointHandler
     :type data: ExperimentData
-    :type grow: boolean
+    :type experiment_type: ExperimentType
     """
 
-    def __init__(self, port, simulator, config, handler, data, growth=True):
+    def __init__(self, port, simulator, config, handler, data, experiment_type):
         """Initialize a no dev experiment class."""
         self.port_connection = port
         self.sim = simulator
         self.config = config
         self.handler = handler
         self.datah = data
-        self.growth = growth
+        self.experiment_type = experiment_type
 
     def load_robot(self):
         """Get all the needed handlers of the robot and start the simulation.
@@ -50,7 +74,7 @@ class MorphologicalDevExperiment(object):
         handlers of the robot, as well as activating some data stream and starting the simulation. The simulation
         is launched in synchronous mode.
         """
-        if self.growth:
+        if self.experiment_type.value == ExperimentType.growth:
             # Calculate the length of the robot's legs for the generation contGen
             self.config.set_final_length(self.datah.contGen)
             # Calculate the position of the robot with its new legs length
@@ -61,7 +85,7 @@ class MorphologicalDevExperiment(object):
         # Get all handlers
         self.handler.get_joint_handlers()
 
-        if self.growth:
+        if self.experiment_type.value == ExperimentType.growth:
             self.handler.grow_legs(self.config.finalLength)
 
         # Start simulation
@@ -286,7 +310,10 @@ class MorphologicalDevExperiment(object):
             cp.deepcopy(self.config.min_leg * np.pi) / 180.0,
             cp.deepcopy(self.config.max_leg * np.pi) / 180.0,
         ]
-        self.datah.set_output_range(arm_range, leg_range)
+        if self.experiment_type == ExperimentType.rom:
+            self.datah.set_output_range(arm_range, leg_range, self.config.angle_offset)
+        else:
+            self.datah.set_output_range(arm_range, leg_range)
 
     def draw_best_nn(self, winner_genome):
         """Draw the NN of the best individual.
@@ -308,7 +335,7 @@ class MorphologicalDevExperiment(object):
         :param test_folder: The name of the folder that contains the data of the individual to evolve.
         :type test_folder: string
         """
-        if self.growth:
+        if self.experiment_type.value == ExperimentType.growth:
             self.datah.contGen = self.config.test_generations
 
         self.datah.directory = test_folder

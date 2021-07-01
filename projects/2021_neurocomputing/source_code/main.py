@@ -1,3 +1,27 @@
+#############################################################################
+#
+#
+#    Copyright (C) 2020 Martín Naya
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU  General Public License
+#    along with this program.  If not, see < http:#www.gnu.org/licenses/ >.
+#
+#    Contact info:
+#
+#    Martín Naya < martin.naya@udc.es >
+#############################################################################
+
+
 """
 Main script to launch the experiments.
 
@@ -16,10 +40,14 @@ optional arguments:
 
 import argparse
 
+
 from morph_dev_experiment import MorphologicalDevExperiment
 
+from config.experiment_type import ExperimentType
 from config.evolution_config import EvolutionConfig
 from config.evolution_config_growth import EvolutionConfigGrowth
+from config.evolution_config_rom import EvolutionConfigRom
+from config.quad_8DOF_rom_experiment_data import Quad8DOFRomExperimentData
 from config.quad_8DOF_experiment_data import Quad8DOFExperimentData
 from config.quad_16DOF_experiment_data import Quad16DOFExperimentData
 from config.quad_16DOF_experiment_data import Quad16DOFExperimentData
@@ -63,8 +91,8 @@ def check_arguments(available_robots, available_types, default_port=19997):
     :return: port_connection: the port number
     :return: test: indicates if the mode is test (test = True) or learning (test = False)
     :return: robot: the robot model
-    :return: type: the experiment type (growth or no devel)
-    :rtype: (integer, bool, string, string)
+    :return: type: the experiment type
+    :rtype: (integer, ExperimentType, string, string)
     """
     robot_help_message = "Robot model. Accepted values: " + ", ".join(available_robots)
     type_help_message = "Experiment type. Accepted values:" + ", ".join(available_types)
@@ -89,17 +117,18 @@ def check_arguments(available_robots, available_types, default_port=19997):
     type = "nodev"
     if arg.type:
         type = arg.type
+        # convert to a enum
+        type = ExperimentType.get_from_value(type)
 
     robot = arg.robot
-
     return port_connection, test, robot, type
 
 
 if __name__ == "__main__":
     # Check script arguments
     available_robots = ["quad8DOF", "quad16DOF", "quad24DOF", "hexapod", "octopod"]
-    available_types = ["nodev", "growth"]
-    port_connection, test, robot, exp_type = check_arguments(available_robots, available_types)
+    available_types = ExperimentType.get_types()
+    port_connection, test, robot, exp_type = check_arguments(available_robots, ExperimentType.get_types_str())
 
     if not robot in available_robots:
         print("Experiment not available: ", robot)
@@ -112,16 +141,19 @@ if __name__ == "__main__":
         if not exp_type in available_types:
             print("Experiment type not available: ", exp_type)
         else:
-            growth = False
-            if exp_type == "growth":
+            if exp_type == ExperimentType.growth:
                 config = EvolutionConfigGrowth()
-                growth = True
+            elif exp_type == ExperimentType.rom:
+                config = EvolutionConfigRom()
             else:
                 config = EvolutionConfig()
 
             if robot == "quad8DOF":
+                if exp_type == ExperimentType.rom:
+                    data = Quad8DOFRomExperimentData(config.generations)
+                else:
+                    data = Quad8DOFExperimentData(config.generations)
                 handler = Quad8DOFJointHandler(sim)
-                data = Quad8DOFExperimentData(config.generations)
             elif robot == "quad16DOF":
                 handler = Quad16DOFJointHandler(sim)
                 data = Quad16DOFExperimentData(config.generations)
@@ -136,9 +168,9 @@ if __name__ == "__main__":
                 data = OctopodExperimentData(config.generations)
 
             # Run evolution
-            experiment = MorphologicalDevExperiment(port_connection, sim, config, handler, data, growth)
+            experiment = MorphologicalDevExperiment(port_connection, sim, config, handler, data, exp_type)
             if test:
-                test_folder = robot + "_" + exp_type
+                test_folder = robot + "_" + exp_type.value
                 experiment.run_test(test_folder)
             else:
                 experiment.run_evolution()
