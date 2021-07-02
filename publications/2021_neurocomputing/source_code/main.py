@@ -49,7 +49,6 @@ from config.evolution_config_rom import EvolutionConfigRom
 from config.quad_8DOF_rom_experiment_data import Quad8DOFRomExperimentData
 from config.quad_8DOF_experiment_data import Quad8DOFExperimentData
 from config.quad_16DOF_experiment_data import Quad16DOFExperimentData
-from config.quad_16DOF_experiment_data import Quad16DOFExperimentData
 from config.quad_24DOF_experiment_data import Quad24DOFExperimentData
 from config.hexapod_experiment_data import HexapodExperimentData
 from config.octopod_experiment_data import OctopodExperimentData
