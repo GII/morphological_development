@@ -74,7 +74,7 @@ class MorphologicalDevExperiment(object):
         handlers of the robot, as well as activating some data stream and starting the simulation. The simulation
         is launched in synchronous mode.
         """
-        if self.experiment_type.value == ExperimentType.growth:
+        if self.experiment_type == ExperimentType.growth:
             # Calculate the length of the robot's legs for the generation contGen
             self.config.set_final_length(self.datah.contGen)
             # Calculate the position of the robot with its new legs length
@@ -85,7 +85,7 @@ class MorphologicalDevExperiment(object):
         # Get all handlers
         self.handler.get_joint_handlers()
 
-        if self.experiment_type.value == ExperimentType.growth:
+        if self.experiment_type == ExperimentType.growth:
             self.handler.grow_legs(self.config.finalLength)
 
         # Start simulation
@@ -335,8 +335,7 @@ class MorphologicalDevExperiment(object):
         :param test_folder: The name of the folder that contains the data of the individual to evolve.
         :type test_folder: string
         """
-        if self.experiment_type.value == ExperimentType.growth:
-            self.datah.contGen = self.config.test_generations
+        self.datah.contGen = self.config.test_generations
 
         self.datah.directory = test_folder
         error, winner_genome = self.load_winner_genome()

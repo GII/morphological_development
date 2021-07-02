@@ -90,7 +90,7 @@ def check_arguments(available_robots, available_types, default_port=19997):
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", help="Port number to connect to Simulator")
-    parser.add_argument("--test", help="Folder name containing the test data")
+    parser.add_argument("--test", help="True (test mode) or False(learnig mode). Default: False")
     parser.add_argument("--type", help=type_help_message)
     parser.add_argument("robot", help=robot_help_message)
 
@@ -108,8 +108,8 @@ def check_arguments(available_robots, available_types, default_port=19997):
     type = "nodev"
     if arg.type:
         type = arg.type
-        # convert to a enum
-        type = ExperimentType.get_from_value(type)
+    # convert to a enum
+    type = ExperimentType.get_from_value(type)
 
     robot = arg.robot
     return port_connection, test, robot, type

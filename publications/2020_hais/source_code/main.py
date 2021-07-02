@@ -45,7 +45,6 @@ from morph_dev_experiment import MorphologicalDevExperiment
 from config.experiment_type import ExperimentType
 from config.evolution_config import EvolutionConfig
 from config.evolution_config_growth import EvolutionConfigGrowth
-from config.evolution_config_rom import EvolutionConfigRom
 from config.quad_8DOF_experiment_data import Quad8DOFExperimentData
 from config.hexapod_experiment_data import HexapodExperimentData
 from config.octopod_experiment_data import OctopodExperimentData
@@ -91,7 +90,7 @@ def check_arguments(available_robots, available_types, default_port=19997):
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", help="Port number to connect to Simulator")
-    parser.add_argument("--test", help="Folder name containing the test data")
+    parser.add_argument("--test", help="True (test mode) or False(learnig mode). Default: False")
     parser.add_argument("--type", help=type_help_message)
     parser.add_argument("robot", help=robot_help_message)
 
@@ -110,7 +109,7 @@ def check_arguments(available_robots, available_types, default_port=19997):
     if arg.type:
         type = arg.type
         # convert to a enum
-        type = ExperimentType.get_from_value(type)
+    type = ExperimentType.get_from_value(type)
 
     robot = arg.robot
     return port_connection, test, robot, type
@@ -135,16 +134,11 @@ if __name__ == "__main__":
         else:
             if exp_type == ExperimentType.growth:
                 config = EvolutionConfigGrowth()
-            elif exp_type == ExperimentType.rom:
-                config = EvolutionConfigRom()
             else:
                 config = EvolutionConfig()
 
             if robot == "quad8DOF":
-                if exp_type == ExperimentType.rom:
-                    data = Quad8DOFRomExperimentData(config.generations)
-                else:
-                    data = Quad8DOFExperimentData(config.generations)
+                data = Quad8DOFExperimentData(config.generations)
                 handler = Quad8DOFJointHandler(sim)
             elif robot == "hexapod":
                 handler = HexapodJointHandler(sim)
