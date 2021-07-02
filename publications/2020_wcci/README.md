@@ -1,7 +1,7 @@
 # 2020 WCCI
 
 This folder present the sorce code of the learning experiments presented in the article titled:
-"An Experiment in Morphological Development for Learning ANN Based Controllers" [Link](https://ieeexplore.ieee.org/document/9206749) (DOI: 10.1109/IJCNN48605.2020.9206749)
+"An Experiment in Morphological Development for Learning ANN Based Controllers" [Link](https://pure.itu.dk/ws/files/85513775/2020_experiment_MD_WCCI_preprint_version.pdf) (DOI: https://doi.org/10.1109/IJCNN48605.2020.9206749)
 
 Presented in: "2020 International Joint Conference on Neural Networks (IJCNN)"
 

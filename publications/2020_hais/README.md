@@ -1,7 +1,7 @@
 # 2020 HAIS
 
 This folder present the sorce code of the learning experiments presented in the article titled:
-"Some Experiments on the Influence of Problem Hardness in Morphological Development Based Learning of Neural Controllers" [Link](https://link.springer.com/chapter/10.1007/978-3-030-61705-9_30) ( DOI https://doi.org/10.1007/978-3-030-61705-9_30 )
+"Some Experiments on the Influence of Problem Hardness in Morphological Development Based Learning of Neural Controllers" [Link](https://arxiv.org/abs/2003.05817) (DOI https://doi.org/10.1007/978-3-030-61705-9_30 )
 
 Presented in: "2020 Hybrid Artificial Intelligent Systems (HAIS)"
 
