@@ -32,7 +32,7 @@ positional arguments:
 optional arguments:
   -h, --help   show this help message and exit
   --port PORT  Port number to connect to Simulator
-  --test TEST  True (test mode) or False(learnig mode). Default: False
+  --test TEST  Boolean: True (test mode) or False (learning mode). Default: False
   --type TYPE  Experiment type. Accepted values: nodev, growth, rom
 
 """
@@ -93,11 +93,11 @@ def check_arguments(available_robots, available_types, default_port=19997):
     :rtype: (integer, ExperimentType, string, string)
     """
     robot_help_message = "Robot model. Accepted values: " + ", ".join(available_robots)
-    type_help_message = "Experiment type. Accepted values:" + ", ".join(available_types)
+    type_help_message = "Experiment type. Accepted values: " + ", ".join(available_types)
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--port", help="Port number to connect to Simulator")
-    parser.add_argument("--test", help="True (test mode) or False(learnig mode). Default: False")
+    parser.add_argument("--test", help="Boolean: True (test mode) or False (learning mode). Default: False")
     parser.add_argument("--type", help=type_help_message)
     parser.add_argument("robot", help=robot_help_message)
 
