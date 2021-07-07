@@ -90,7 +90,8 @@ def check_arguments(available_robots, available_types, default_port=19997):
     :return: test: indicates if the mode is test (test = True) or learning (test = False)
     :return: robot: the robot model
     :return: type: the experiment type
-    :rtype: (integer, ExperimentType, string, string)
+
+    :rtype: (integer, boolean, string, ExperimentType)
     """
     robot_help_message = "Robot model. Accepted values: " + ", ".join(available_robots)
     type_help_message = "Experiment type. Accepted values: " + ", ".join(available_types)
