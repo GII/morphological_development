@@ -192,7 +192,7 @@
 <span class="sd">optional arguments:</span>
 <span class="sd">  -h, --help   show this help message and exit</span>
 <span class="sd">  --port PORT  Port number to connect to Simulator</span>
-<span class="sd">  --test TEST  True (test mode) or False(learnig mode). Default: False</span>
+<span class="sd">  --test TEST  Boolean: True (test mode) or False (learning mode). Default: False</span>
 <span class="sd">  --type TYPE  Experiment type. Accepted values: nodev, growth, rom</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -253,11 +253,11 @@
 <span class="sd">    :rtype: (integer, ExperimentType, string, string)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">robot_help_message</span> <span class="o">=</span> <span class="s2">&quot;Robot model. Accepted values: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">available_robots</span><span class="p">)</span>
-    <span class="n">type_help_message</span> <span class="o">=</span> <span class="s2">&quot;Experiment type. Accepted values:&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">available_types</span><span class="p">)</span>
+    <span class="n">type_help_message</span> <span class="o">=</span> <span class="s2">&quot;Experiment type. Accepted values: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">available_types</span><span class="p">)</span>
 
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--port&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Port number to connect to Simulator&quot;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--test&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;True (test mode) or False(learnig mode). Default: False&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--test&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Boolean: True (test mode) or False (learning mode). Default: False&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--type&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">type_help_message</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;robot&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">robot_help_message</span><span class="p">)</span>
 
@@ -346,7 +346,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Martín Naya. Last updated on July 1, 2021.
+        &#169; Copyright 2021, Martín Naya. Last updated on July 7, 2021.
 
     </p>
   </div>
