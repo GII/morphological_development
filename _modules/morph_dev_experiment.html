@@ -158,7 +158,30 @@
            <div itemprop="articleBody">
             
   <h1>Source code for morph_dev_experiment</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;This module contains the class to instance for running morphogical development experiments.&quot;&quot;&quot;</span>
+<span></span><span class="c1">#############################################################################</span>
+<span class="c1">#</span>
+<span class="c1">#    Copyright (C) 2020 Martín Naya</span>
+<span class="c1">#</span>
+<span class="c1">#    This program is free software: you can redistribute it and/or modify</span>
+<span class="c1">#    it under the terms of the GNU General Public License as published by</span>
+<span class="c1">#    the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">#    (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1">#    This program is distributed in the hope that it will be useful,</span>
+<span class="c1">#    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">#    GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1">#    You should have received a copy of the GNU  General Public License</span>
+<span class="c1">#    along with this program.  If not, see &lt; http:#www.gnu.org/licenses/ &gt;.</span>
+<span class="c1">#</span>
+<span class="c1">#    Contact info:</span>
+<span class="c1">#</span>
+<span class="c1">#    Martín Naya &lt; martin.naya@udc.es &gt;</span>
+<span class="c1">#############################################################################</span>
+
+<span class="sd">&quot;&quot;&quot;This module contains the class to instance for running morphogical development experiments.&quot;&quot;&quot;</span>
+
 
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
 
@@ -174,6 +197,8 @@
 <span class="kn">import</span> <span class="nn">MultiNEAT</span> <span class="k">as</span> <span class="nn">NEAT</span>
 <span class="kn">from</span> <span class="nn">MultiNEAT</span> <span class="kn">import</span> <span class="n">EvaluateGenomeList_Serial</span>
 
+<span class="kn">from</span> <span class="nn">config.experiment_type</span> <span class="kn">import</span> <span class="n">ExperimentType</span>
+
 
 <div class="viewcode-block" id="MorphologicalDevExperiment"><a class="viewcode-back" href="../experiment.html#morph_dev_experiment.MorphologicalDevExperiment">[docs]</a><span class="k">class</span> <span class="nc">MorphologicalDevExperiment</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This class represents a  morphological development experiment.</span>
@@ -183,24 +208,24 @@
 <span class="sd">    :param config: Parameter for the evolution configuration.</span>
 <span class="sd">    :param handler: The joint handlers of the robot with which the experiment is carried out.</span>
 <span class="sd">    :param data: Class to store relevant data during the evolution</span>
-<span class="sd">    :param growth: Indicates the type of the experiment(growth = True: a growth experiment, growth = Fasle: a non develpment experiment)</span>
+<span class="sd">    :param experiment_type: Indicates the type of the experiment</span>
 
 <span class="sd">    :type port: string</span>
 <span class="sd">    :type sim: VREPSimulatorFacade</span>
 <span class="sd">    :type config: EvolutionConfig</span>
 <span class="sd">    :type handler: JointHandler</span>
 <span class="sd">    :type data: ExperimentData</span>
-<span class="sd">    :type grow: boolean</span>
+<span class="sd">    :type experiment_type: ExperimentType</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">simulator</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">handler</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">growth</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">simulator</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">handler</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">experiment_type</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize a no dev experiment class.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">port_connection</span> <span class="o">=</span> <span class="n">port</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sim</span> <span class="o">=</span> <span class="n">simulator</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">handler</span> <span class="o">=</span> <span class="n">handler</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">datah</span> <span class="o">=</span> <span class="n">data</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">growth</span> <span class="o">=</span> <span class="n">growth</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">experiment_type</span> <span class="o">=</span> <span class="n">experiment_type</span>
 
 <div class="viewcode-block" id="MorphologicalDevExperiment.load_robot"><a class="viewcode-back" href="../experiment.html#morph_dev_experiment.MorphologicalDevExperiment.load_robot">[docs]</a>    <span class="k">def</span> <span class="nf">load_robot</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get all the needed handlers of the robot and start the simulation.</span>
@@ -209,7 +234,7 @@
 <span class="sd">        handlers of the robot, as well as activating some data stream and starting the simulation. The simulation</span>
 <span class="sd">        is launched in synchronous mode.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">growth</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment_type</span> <span class="o">==</span> <span class="n">ExperimentType</span><span class="o">.</span><span class="n">growth</span><span class="p">:</span>
             <span class="c1"># Calculate the length of the robot&#39;s legs for the generation contGen</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">set_final_length</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">datah</span><span class="o">.</span><span class="n">contGen</span><span class="p">)</span>
             <span class="c1"># Calculate the position of the robot with its new legs length</span>
@@ -220,7 +245,7 @@
         <span class="c1"># Get all handlers</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">handler</span><span class="o">.</span><span class="n">get_joint_handlers</span><span class="p">()</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">growth</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment_type</span> <span class="o">==</span> <span class="n">ExperimentType</span><span class="o">.</span><span class="n">growth</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">handler</span><span class="o">.</span><span class="n">grow_legs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">finalLength</span><span class="p">)</span>
 
         <span class="c1"># Start simulation</span>
@@ -232,7 +257,10 @@
 <div class="viewcode-block" id="MorphologicalDevExperiment.ev_single_genome"><a class="viewcode-back" href="../experiment.html#morph_dev_experiment.MorphologicalDevExperiment.ev_single_genome">[docs]</a>    <span class="k">def</span> <span class="nf">ev_single_genome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">genome</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the fitness value for an individual.</span>
 
-<span class="sd">        This method returns the distance travelled by the robot in straight line for each individual (genotype).</span>
+<span class="sd">        :param genome: The individal to evolve</span>
+
+<span class="sd">        :return: the distance travelled by the robot in straight line for each individual (genotype)</span>
+<span class="sd">        :rtype: Genome</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Getting the robot handlers and starting the simulation</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">load_robot</span><span class="p">()</span>
@@ -267,7 +295,15 @@
         <span class="k">return</span> <span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="MorphologicalDevExperiment.run_population_evolution"><a class="viewcode-back" href="../experiment.html#morph_dev_experiment.MorphologicalDevExperiment.run_population_evolution">[docs]</a>    <span class="k">def</span> <span class="nf">run_population_evolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">genIndex</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Evolve the population.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Evolve the population.</span>
+
+<span class="sd">        :param genIndex: Number</span>
+<span class="sd">        :rtype: integer: Seed for the random generation when creating the population</span>
+
+<span class="sd">        :return: Best generation number, best individual index, best individual and best fitness</span>
+<span class="sd">        :rtype: integer, integer, Genome, float</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Definition of the features of each genome of the population and creation of the population.</span>
         <span class="n">inputsNeuron</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">numEntries</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="n">outputsNeuron</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handler</span><span class="o">.</span><span class="n">joint_number</span>
@@ -284,6 +320,7 @@
             <span class="mi">0</span><span class="p">,</span>
         <span class="p">)</span>
 
+        <span class="c1"># Genone, NEAT config parameters, RandomizeWeights = True,  RandonRange = 1.0, RNG_seed = genIndex</span>
         <span class="n">pop</span> <span class="o">=</span> <span class="n">NEAT</span><span class="o">.</span><span class="n">Population</span><span class="p">(</span><span class="n">genome</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">neat_params</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">genIndex</span><span class="p">)</span>
         <span class="n">pop</span><span class="o">.</span><span class="n">RNG</span><span class="o">.</span><span class="n">Seed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">port_connection</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NumLinks:&quot;</span><span class="p">,</span> <span class="n">genome</span><span class="o">.</span><span class="n">NumLinks</span><span class="p">())</span>
@@ -337,7 +374,11 @@
         <span class="k">return</span> <span class="p">(</span><span class="n">best_generation_ever</span><span class="p">,</span> <span class="n">best_index_ever</span><span class="p">,</span> <span class="n">best_gs</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">best_gs</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">best_fit_ever</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MorphologicalDevExperiment.set_data_folder_name"><a class="viewcode-back" href="../experiment.html#morph_dev_experiment.MorphologicalDevExperiment.set_data_folder_name">[docs]</a>    <span class="k">def</span> <span class="nf">set_data_folder_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Set then name of the folder to save the experiments.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Set then name of the folder to save the experiments.</span>
+
+<span class="sd">        :return: The forder path</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">directory00</span> <span class="o">=</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">result_folder</span>
             <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span>
@@ -351,7 +392,13 @@
         <span class="k">return</span> <span class="n">directory00</span></div>
 
 <div class="viewcode-block" id="MorphologicalDevExperiment.create_data_folder"><a class="viewcode-back" href="../experiment.html#morph_dev_experiment.MorphologicalDevExperiment.create_data_folder">[docs]</a>    <span class="k">def</span> <span class="nf">create_data_folder</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Create a folder to save the relevant data.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Create a folder to save the relevant data.</span>
+
+<span class="sd">        If the data folder can&#39;t be created, an error message is shown</span>
+
+<span class="sd">        :return: error (True: if the folder couldn&#39;t be created, otherwise False)</span>
+<span class="sd">        :rtype: boolean</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">error</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">datah</span><span class="o">.</span><span class="n">directory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_data_folder_name</span><span class="p">()</span>
         <span class="k">try</span><span class="p">:</span>
@@ -362,16 +409,15 @@
 
         <span class="k">return</span> <span class="n">error</span></div>
 
-<div class="viewcode-block" id="MorphologicalDevExperiment.serialize_best_individual"><a class="viewcode-back" href="../experiment.html#morph_dev_experiment.MorphologicalDevExperiment.serialize_best_individual">[docs]</a>    <span class="k">def</span> <span class="nf">serialize_best_individual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">best_individual</span><span class="p">):</span>
+<div class="viewcode-block" id="MorphologicalDevExperiment.serialize_best_individual"><a class="viewcode-back" href="../experiment.html#morph_dev_experiment.MorphologicalDevExperiment.serialize_best_individual">[docs]</a>    <span class="k">def</span> <span class="nf">serialize_best_individual</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">winner_genome</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Serialize to a file the winner genome.</span>
 
 <span class="sd">        :param best_individual: The best individual to serialize</span>
-<span class="sd">        :type port_connection: integer</span>
+<span class="sd">        :type best_individual: Genome</span>
 
-<span class="sd">        :return: the V-REP Client ID</span>
-<span class="sd">        :rtype: integer</span>
+<span class="sd">        :return: error (True: if the file couldn&#39;t be created, otherwise False)</span>
+<span class="sd">        :rtype: boolean</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">winner_genome</span> <span class="o">=</span> <span class="n">best_individual</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">error</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># saving the genome of the best individual obtained</span>
@@ -385,7 +431,11 @@
         <span class="k">return</span> <span class="n">error</span></div>
 
 <div class="viewcode-block" id="MorphologicalDevExperiment.load_winner_genome"><a class="viewcode-back" href="../experiment.html#morph_dev_experiment.MorphologicalDevExperiment.load_winner_genome">[docs]</a>    <span class="k">def</span> <span class="nf">load_winner_genome</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Load the winner genome data.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Load the winner genome data from file with pickle.</span>
+
+<span class="sd">        :return: the winner genome and error (True: if the file couldn&#39;t be created, otherwise False)</span>
+<span class="sd">        :rtype: Genome, boolean</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">test_folder</span>
             <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">sep</span>
@@ -420,10 +470,17 @@
             <span class="n">cp</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">min_leg</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">,</span>
             <span class="n">cp</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">max_leg</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">,</span>
         <span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">datah</span><span class="o">.</span><span class="n">set_output_range</span><span class="p">(</span><span class="n">arm_range</span><span class="p">,</span> <span class="n">leg_range</span><span class="p">)</span></div>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment_type</span> <span class="o">==</span> <span class="n">ExperimentType</span><span class="o">.</span><span class="n">rom</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">datah</span><span class="o">.</span><span class="n">set_output_range</span><span class="p">(</span><span class="n">arm_range</span><span class="p">,</span> <span class="n">leg_range</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">angle_offset</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">datah</span><span class="o">.</span><span class="n">set_output_range</span><span class="p">(</span><span class="n">arm_range</span><span class="p">,</span> <span class="n">leg_range</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MorphologicalDevExperiment.draw_best_nn"><a class="viewcode-back" href="../experiment.html#morph_dev_experiment.MorphologicalDevExperiment.draw_best_nn">[docs]</a>    <span class="k">def</span> <span class="nf">draw_best_nn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">winner_genome</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Draw the NN of the best individual.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Draw the NN of the best individual.</span>
+
+<span class="sd">        :param winner_genome: The best individual</span>
+<span class="sd">        :type best_individual: Genome</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">net</span> <span class="o">=</span> <span class="n">NEAT</span><span class="o">.</span><span class="n">NeuralNetwork</span><span class="p">()</span>
         <span class="n">winner_genome</span><span class="o">.</span><span class="n">BuildPhenotype</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
         <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
@@ -438,8 +495,7 @@
 <span class="sd">        :param test_folder: The name of the folder that contains the data of the individual to evolve.</span>
 <span class="sd">        :type test_folder: string</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">growth</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">datah</span><span class="o">.</span><span class="n">contGen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">test_generations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">datah</span><span class="o">.</span><span class="n">contGen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">test_generations</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">datah</span><span class="o">.</span><span class="n">directory</span> <span class="o">=</span> <span class="n">test_folder</span>
         <span class="n">error</span><span class="p">,</span> <span class="n">winner_genome</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_winner_genome</span><span class="p">()</span>
@@ -461,7 +517,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">experiment_configuration</span><span class="p">()</span>
             <span class="c1"># Run the evolution loop and get the best individual</span>
             <span class="n">best_individual</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_population_evolution</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">port_connection</span><span class="p">)</span>
-            <span class="n">error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serialize_best_individual</span><span class="p">(</span><span class="n">best_individual</span><span class="p">)</span>
+            <span class="n">winner_genome</span> <span class="o">=</span> <span class="n">best_individual</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">serialize_best_individual</span><span class="p">(</span><span class="n">winner_genome</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error saving the best individual in a file.&quot;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">sim</span><span class="o">.</span><span class="n">stop_simulation</span><span class="p">()</span></div></div>
@@ -476,7 +533,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Nombre autor.
+        &#169; Copyright 2021, Martín Naya. Last updated on July 1, 2021.
 
     </p>
   </div>

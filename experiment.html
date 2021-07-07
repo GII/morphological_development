@@ -166,7 +166,7 @@
 <p>This module contains the class to instance for running morphogical development experiments.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">morph_dev_experiment.</span></span><span class="sig-name descname"><span class="pre">MorphologicalDevExperiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">growth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">morph_dev_experiment.</span></span><span class="sig-name descname"><span class="pre">MorphologicalDevExperiment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">simulator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">experiment_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This class represents a  morphological development experiment.</p>
 <dl class="field-list simple">
@@ -177,7 +177,7 @@
 <li><p><strong>config</strong> (<a class="reference internal" href="config.html#config.evolution_config.EvolutionConfig" title="config.evolution_config.EvolutionConfig"><em>EvolutionConfig</em></a>) – Parameter for the evolution configuration.</p></li>
 <li><p><strong>handler</strong> (<a class="reference internal" href="robot.html#robot.joint_handler.JointHandler" title="robot.joint_handler.JointHandler"><em>JointHandler</em></a>) – The joint handlers of the robot with which the experiment is carried out.</p></li>
 <li><p><strong>data</strong> (<a class="reference internal" href="config.html#config.experiment_data.ExperimentData" title="config.experiment_data.ExperimentData"><em>ExperimentData</em></a>) – Class to store relevant data during the evolution</p></li>
-<li><p><strong>growth</strong> – Indicates the type of the experiment(growth = True: a growth experiment, growth = Fasle: a non develpment experiment)</p></li>
+<li><p><strong>experiment_type</strong> (<em>ExperimentType</em>) – Indicates the type of the experiment</p></li>
 </ul>
 </dd>
 </dl>
@@ -185,19 +185,43 @@
 <dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.create_data_folder">
 <span class="sig-name descname"><span class="pre">create_data_folder</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.create_data_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.create_data_folder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a folder to save the relevant data.</p>
+<p>If the data folder can’t be created, an error message is shown</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>error (True: if the folder couldn’t be created, otherwise False)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.draw_best_nn">
 <span class="sig-name descname"><span class="pre">draw_best_nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">winner_genome</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.draw_best_nn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.draw_best_nn" title="Permalink to this definition">¶</a></dt>
 <dd><p>Draw the NN of the best individual.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>winner_genome</strong> – The best individual</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.ev_single_genome">
 <span class="sig-name descname"><span class="pre">ev_single_genome</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genome</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.ev_single_genome"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.ev_single_genome" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the fitness value for an individual.</p>
-<p>This method returns the distance travelled by the robot in straight line for each individual (genotype).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>genome</strong> – The individal to evolve</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the distance travelled by the robot in straight line for each individual (genotype)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Genome</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -219,7 +243,15 @@ is launched in synchronous mode.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.load_winner_genome">
 <span class="sig-name descname"><span class="pre">load_winner_genome</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.load_winner_genome"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.load_winner_genome" title="Permalink to this definition">¶</a></dt>
-<dd><p>Load the winner genome data.</p>
+<dd><p>Load the winner genome data from file with pickle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the winner genome and error (True: if the file couldn’t be created, otherwise False)</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Genome, boolean</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -233,6 +265,20 @@ is launched in synchronous mode.</p>
 <dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.run_population_evolution">
 <span class="sig-name descname"><span class="pre">run_population_evolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genIndex</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.run_population_evolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.run_population_evolution" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evolve the population.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>genIndex</strong> – Number</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>integer: Seed for the random generation when creating the population</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Best generation number, best individual index, best individual and best fitness</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>integer, integer, Genome, float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -248,17 +294,17 @@ is launched in synchronous mode.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.serialize_best_individual">
-<span class="sig-name descname"><span class="pre">serialize_best_individual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">best_individual</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.serialize_best_individual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.serialize_best_individual" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">serialize_best_individual</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">winner_genome</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.serialize_best_individual"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.serialize_best_individual" title="Permalink to this definition">¶</a></dt>
 <dd><p>Serialize to a file the winner genome.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>best_individual</strong> – The best individual to serialize</p>
+<dd class="field-odd"><p><strong>best_individual</strong> (<em>Genome</em>) – The best individual to serialize</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>the V-REP Client ID</p>
+<dd class="field-even"><p>error (True: if the file couldn’t be created, otherwise False)</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>integer</p>
+<dd class="field-odd"><p>boolean</p>
 </dd>
 </dl>
 </dd></dl>
@@ -267,6 +313,14 @@ is launched in synchronous mode.</p>
 <dt class="sig sig-object py" id="morph_dev_experiment.MorphologicalDevExperiment.set_data_folder_name">
 <span class="sig-name descname"><span class="pre">set_data_folder_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/morph_dev_experiment.html#MorphologicalDevExperiment.set_data_folder_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#morph_dev_experiment.MorphologicalDevExperiment.set_data_folder_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set then name of the folder to save the experiments.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The forder path</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -287,7 +341,7 @@ is launched in synchronous mode.</p>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Nombre autor.
+        &#169; Copyright 2021, Martín Naya. Last updated on July 1, 2021.
 
     </p>
   </div>

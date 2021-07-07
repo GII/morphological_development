@@ -158,7 +158,29 @@
            <div itemprop="articleBody">
             
   <h1>Source code for config.evolution_config</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">MultiNEAT</span> <span class="k">as</span> <span class="nn">NEAT</span>
+<span></span><span class="c1">#############################################################################</span>
+<span class="c1">#</span>
+<span class="c1">#    Copyright (C) 2020 Martín Naya</span>
+<span class="c1">#</span>
+<span class="c1">#    This program is free software: you can redistribute it and/or modify</span>
+<span class="c1">#    it under the terms of the GNU General Public License as published by</span>
+<span class="c1">#    the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">#    (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1">#    This program is distributed in the hope that it will be useful,</span>
+<span class="c1">#    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">#    GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1">#    You should have received a copy of the GNU  General Public License</span>
+<span class="c1">#    along with this program.  If not, see &lt; http:#www.gnu.org/licenses/ &gt;.</span>
+<span class="c1">#</span>
+<span class="c1">#    Contact info:</span>
+<span class="c1">#</span>
+<span class="c1">#    Martín Naya &lt; martin.naya@udc.es &gt;</span>
+<span class="c1">#############################################################################</span>
+
+<span class="kn">import</span> <span class="nn">MultiNEAT</span> <span class="k">as</span> <span class="nn">NEAT</span>
 
 
 <div class="viewcode-block" id="EvolutionConfig"><a class="viewcode-back" href="../../config.html#config.evolution_config.EvolutionConfig">[docs]</a><span class="k">class</span> <span class="nc">EvolutionConfig</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -169,9 +191,9 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">test_folder</span> <span class="o">=</span> <span class="s2">&quot;testdata&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">secondsTime</span> <span class="o">=</span> <span class="mi">30</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">numEntries</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">generations</span> <span class="o">=</span> <span class="mi">300</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">generations</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># 300</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">test_generations</span> <span class="o">=</span> <span class="mi">300</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">populationSize</span> <span class="o">=</span> <span class="mi">50</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">populationSize</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># 50</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">startExpe</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">experiments</span> <span class="o">=</span> <span class="mi">1</span>
 
@@ -288,7 +310,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Nombre autor.
+        &#169; Copyright 2021, Martín Naya. Last updated on July 1, 2021.
 
     </p>
   </div>

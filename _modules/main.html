@@ -158,7 +158,30 @@
            <div itemprop="articleBody">
             
   <h1>Source code for main</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="c1">#############################################################################</span>
+<span class="c1">#</span>
+<span class="c1">#    Copyright (C) 2020 Martín Naya</span>
+<span class="c1">#</span>
+<span class="c1">#    This program is free software: you can redistribute it and/or modify</span>
+<span class="c1">#    it under the terms of the GNU General Public License as published by</span>
+<span class="c1">#    the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1">#    (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1">#    This program is distributed in the hope that it will be useful,</span>
+<span class="c1">#    but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1">#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1">#    GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1">#    You should have received a copy of the GNU  General Public License</span>
+<span class="c1">#    along with this program.  If not, see &lt; http:#www.gnu.org/licenses/ &gt;.</span>
+<span class="c1">#</span>
+<span class="c1">#    Contact info:</span>
+<span class="c1">#</span>
+<span class="c1">#    Martín Naya &lt; martin.naya@udc.es &gt;</span>
+<span class="c1">#############################################################################</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Main script to launch the experiments.</span>
 
 <span class="sd">usage: python main.py [-h] [--port PORT] [--test TEST] [--type TYPE] robot</span>
@@ -176,12 +199,15 @@
 
 <span class="kn">import</span> <span class="nn">argparse</span>
 
+
 <span class="kn">from</span> <span class="nn">morph_dev_experiment</span> <span class="kn">import</span> <span class="n">MorphologicalDevExperiment</span>
 
+<span class="kn">from</span> <span class="nn">config.experiment_type</span> <span class="kn">import</span> <span class="n">ExperimentType</span>
 <span class="kn">from</span> <span class="nn">config.evolution_config</span> <span class="kn">import</span> <span class="n">EvolutionConfig</span>
 <span class="kn">from</span> <span class="nn">config.evolution_config_growth</span> <span class="kn">import</span> <span class="n">EvolutionConfigGrowth</span>
+<span class="kn">from</span> <span class="nn">config.evolution_config_rom</span> <span class="kn">import</span> <span class="n">EvolutionConfigRom</span>
+<span class="kn">from</span> <span class="nn">config.quad_8DOF_rom_experiment_data</span> <span class="kn">import</span> <span class="n">Quad8DOFRomExperimentData</span>
 <span class="kn">from</span> <span class="nn">config.quad_8DOF_experiment_data</span> <span class="kn">import</span> <span class="n">Quad8DOFExperimentData</span>
-<span class="kn">from</span> <span class="nn">config.quad_16DOF_experiment_data</span> <span class="kn">import</span> <span class="n">Quad16DOFExperimentData</span>
 <span class="kn">from</span> <span class="nn">config.quad_16DOF_experiment_data</span> <span class="kn">import</span> <span class="n">Quad16DOFExperimentData</span>
 <span class="kn">from</span> <span class="nn">config.quad_24DOF_experiment_data</span> <span class="kn">import</span> <span class="n">Quad24DOFExperimentData</span>
 <span class="kn">from</span> <span class="nn">config.hexapod_experiment_data</span> <span class="kn">import</span> <span class="n">HexapodExperimentData</span>
@@ -223,15 +249,15 @@
 <span class="sd">    :return: port_connection: the port number</span>
 <span class="sd">    :return: test: indicates if the mode is test (test = True) or learning (test = False)</span>
 <span class="sd">    :return: robot: the robot model</span>
-<span class="sd">    :return: type: the experiment type (growth or no devel)</span>
-<span class="sd">    :rtype: (integer, bool, string, string)</span>
+<span class="sd">    :return: type: the experiment type</span>
+<span class="sd">    :rtype: (integer, ExperimentType, string, string)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">robot_help_message</span> <span class="o">=</span> <span class="s2">&quot;Robot model. Accepted values: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">available_robots</span><span class="p">)</span>
     <span class="n">type_help_message</span> <span class="o">=</span> <span class="s2">&quot;Experiment type. Accepted values:&quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">available_types</span><span class="p">)</span>
 
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--port&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Port number to connect to Simulator&quot;</span><span class="p">)</span>
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--test&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Folder name containing the test data&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--test&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;True (test mode) or False(learnig mode). Default: False&quot;</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--type&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">type_help_message</span><span class="p">)</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;robot&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">robot_help_message</span><span class="p">)</span>
 
@@ -249,17 +275,18 @@
     <span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;nodev&quot;</span>
     <span class="k">if</span> <span class="n">arg</span><span class="o">.</span><span class="n">type</span><span class="p">:</span>
         <span class="nb">type</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">type</span>
+    <span class="c1"># convert to a enum</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="n">ExperimentType</span><span class="o">.</span><span class="n">get_from_value</span><span class="p">(</span><span class="nb">type</span><span class="p">)</span>
 
     <span class="n">robot</span> <span class="o">=</span> <span class="n">arg</span><span class="o">.</span><span class="n">robot</span>
-
     <span class="k">return</span> <span class="n">port_connection</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">robot</span><span class="p">,</span> <span class="nb">type</span></div>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
     <span class="c1"># Check script arguments</span>
     <span class="n">available_robots</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;quad8DOF&quot;</span><span class="p">,</span> <span class="s2">&quot;quad16DOF&quot;</span><span class="p">,</span> <span class="s2">&quot;quad24DOF&quot;</span><span class="p">,</span> <span class="s2">&quot;hexapod&quot;</span><span class="p">,</span> <span class="s2">&quot;octopod&quot;</span><span class="p">]</span>
-    <span class="n">available_types</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;nodev&quot;</span><span class="p">,</span> <span class="s2">&quot;growth&quot;</span><span class="p">]</span>
-    <span class="n">port_connection</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">robot</span><span class="p">,</span> <span class="n">exp_type</span> <span class="o">=</span> <span class="n">check_arguments</span><span class="p">(</span><span class="n">available_robots</span><span class="p">,</span> <span class="n">available_types</span><span class="p">)</span>
+    <span class="n">available_types</span> <span class="o">=</span> <span class="n">ExperimentType</span><span class="o">.</span><span class="n">get_types</span><span class="p">()</span>
+    <span class="n">port_connection</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">robot</span><span class="p">,</span> <span class="n">exp_type</span> <span class="o">=</span> <span class="n">check_arguments</span><span class="p">(</span><span class="n">available_robots</span><span class="p">,</span> <span class="n">ExperimentType</span><span class="o">.</span><span class="n">get_types_str</span><span class="p">())</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">robot</span> <span class="ow">in</span> <span class="n">available_robots</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Experiment not available: &quot;</span><span class="p">,</span> <span class="n">robot</span><span class="p">)</span>
@@ -272,16 +299,19 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="n">exp_type</span> <span class="ow">in</span> <span class="n">available_types</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Experiment type not available: &quot;</span><span class="p">,</span> <span class="n">exp_type</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">growth</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="k">if</span> <span class="n">exp_type</span> <span class="o">==</span> <span class="s2">&quot;growth&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">exp_type</span> <span class="o">==</span> <span class="n">ExperimentType</span><span class="o">.</span><span class="n">growth</span><span class="p">:</span>
                 <span class="n">config</span> <span class="o">=</span> <span class="n">EvolutionConfigGrowth</span><span class="p">()</span>
-                <span class="n">growth</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">elif</span> <span class="n">exp_type</span> <span class="o">==</span> <span class="n">ExperimentType</span><span class="o">.</span><span class="n">rom</span><span class="p">:</span>
+                <span class="n">config</span> <span class="o">=</span> <span class="n">EvolutionConfigRom</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">config</span> <span class="o">=</span> <span class="n">EvolutionConfig</span><span class="p">()</span>
 
             <span class="k">if</span> <span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;quad8DOF&quot;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">exp_type</span> <span class="o">==</span> <span class="n">ExperimentType</span><span class="o">.</span><span class="n">rom</span><span class="p">:</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="n">Quad8DOFRomExperimentData</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">generations</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="n">Quad8DOFExperimentData</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">generations</span><span class="p">)</span>
                 <span class="n">handler</span> <span class="o">=</span> <span class="n">Quad8DOFJointHandler</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
-                <span class="n">data</span> <span class="o">=</span> <span class="n">Quad8DOFExperimentData</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">generations</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">robot</span> <span class="o">==</span> <span class="s2">&quot;quad16DOF&quot;</span><span class="p">:</span>
                 <span class="n">handler</span> <span class="o">=</span> <span class="n">Quad16DOFJointHandler</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
                 <span class="n">data</span> <span class="o">=</span> <span class="n">Quad16DOFExperimentData</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">generations</span><span class="p">)</span>
@@ -296,9 +326,9 @@
                 <span class="n">data</span> <span class="o">=</span> <span class="n">OctopodExperimentData</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">generations</span><span class="p">)</span>
 
             <span class="c1"># Run evolution</span>
-            <span class="n">experiment</span> <span class="o">=</span> <span class="n">MorphologicalDevExperiment</span><span class="p">(</span><span class="n">port_connection</span><span class="p">,</span> <span class="n">sim</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">handler</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">growth</span><span class="p">)</span>
+            <span class="n">experiment</span> <span class="o">=</span> <span class="n">MorphologicalDevExperiment</span><span class="p">(</span><span class="n">port_connection</span><span class="p">,</span> <span class="n">sim</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">handler</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">exp_type</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">test</span><span class="p">:</span>
-                <span class="n">test_folder</span> <span class="o">=</span> <span class="n">robot</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">exp_type</span>
+                <span class="n">test_folder</span> <span class="o">=</span> <span class="n">robot</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">exp_type</span><span class="o">.</span><span class="n">value</span>
                 <span class="n">experiment</span><span class="o">.</span><span class="n">run_test</span><span class="p">(</span><span class="n">test_folder</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">experiment</span><span class="o">.</span><span class="n">run_evolution</span><span class="p">()</span>
@@ -316,7 +346,7 @@
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2021, Nombre autor.
+        &#169; Copyright 2021, Martín Naya. Last updated on July 1, 2021.
 
     </p>
   </div>
