@@ -32,8 +32,8 @@ positional arguments:
 optional arguments:
   -h, --help   show this help message and exit
   --port PORT  Port number to connect to Simulator
-  --test TEST  Folder name containing the test data
-  --type TYPE  Experiment type. Accepted values:nodev, growth
+  --test TEST  True (test mode) or False(learnig mode). Default: False
+  --type TYPE  Experiment type. Accepted values: nodev, growth, rom
 
 """
 

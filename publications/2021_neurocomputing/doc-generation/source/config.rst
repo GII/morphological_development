@@ -14,6 +14,18 @@ Evolution settings
     :members:
     :show-inheritance:    
 
+.. automodule:: config.evolution_config_rom
+    :members:
+    :show-inheritance:      
+
+===================
+Evolution type
+===================
+
+.. automodule:: config.experiment_type
+    :members:
+    :show-inheritance:
+
 ================
 Experiment data
 ================

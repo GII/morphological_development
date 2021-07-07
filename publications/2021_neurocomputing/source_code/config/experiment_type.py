@@ -24,7 +24,7 @@ from enum import Enum
 
 
 class ExperimentType(Enum):
-    """This enumeration represents the list experiment type available."""
+    """This enumeration represents the experiment types available: growth, nodev, rom"""
 
     growth = "growth"
     nodev = "nodev"
