@@ -250,7 +250,8 @@
 <span class="sd">    :return: test: indicates if the mode is test (test = True) or learning (test = False)</span>
 <span class="sd">    :return: robot: the robot model</span>
 <span class="sd">    :return: type: the experiment type</span>
-<span class="sd">    :rtype: (integer, ExperimentType, string, string)</span>
+
+<span class="sd">    :rtype: (integer, boolean, string, ExperimentType)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">robot_help_message</span> <span class="o">=</span> <span class="s2">&quot;Robot model. Accepted values: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">available_robots</span><span class="p">)</span>
     <span class="n">type_help_message</span> <span class="o">=</span> <span class="s2">&quot;Experiment type. Accepted values: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">available_types</span><span class="p">)</span>
