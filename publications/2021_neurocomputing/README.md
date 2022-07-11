@@ -1,6 +1,8 @@
 # 2021 Neurocomputing
 
-Supplementary material for the article submited to the journal Neurocomputing in 2021.
+Supplementary material for the article submited to the journal Neurocomputing in 2021: "A study of growth based morphological development in neural network controlled walkers"
+[Link](https://doi.org/10.1016/j.neucom.2021.09.082) (DOI:10.1016/j.neucom.2021.09.082)
+
 
 - doc-generation: Documentation about the different functions, methods, etc. utilized.
 - Sorce code: Folder that contains the source code for the different experiments. It contais:
