@@ -6,5 +6,5 @@ It is structured according to the publications related with the topic of morphol
 
 For any doubt, write an issue or contact me: martin.naya@udc.es
 
-The Integrated Group For Engineering Research: https://gii.udc.es/?id=3
+The Integrated Group For Engineering Research: https://gii.udc.es/
 
