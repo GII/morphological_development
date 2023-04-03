@@ -1,10 +1,7 @@
 # Publications
 
-In this folder, the different publication related with the work performed at the Integrated Group for Engineering Research in the field of morphological development are presented.
+In this folder, the different publications related to the work performed at the Integrated Group for Engineering Research in the field of morphological development are presented.
 
-Each folder follows the same structure, where one can find:
+Although each folder may have a different structure, in all of them it is possible to find a link to the article (if published) and several information, such as the source code of the experiments, the simulator, videos, etc.
 
-- source_code: Source code of the learning programs developed to perform the experiments.
-- videos: Videos about relevant information of the experiments. They are mainly dedicated to show how the robots perform the objective task.
-- VREP or CoppeliaSim scenes: Scenes containing the different robot morphologies utilized on each publication.
-- software: Descripton of the software utilized for performing the experiments (programs, libraries, OS, etc.)
+It may be notice that, as a long-time research line, the simulator or libraries may change along the project, having different versions, libraries that are utilized in some publications but not in anothers, etc.
