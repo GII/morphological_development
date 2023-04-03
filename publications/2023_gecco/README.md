@@ -14,7 +14,7 @@ The article is structured in two folders, which represent the experiment perform
 - A ".py" file with a descriptive name of the experiment which have the "main" function and the core of the experimento (e.g "NAO_growth_and_noise_input_sigma.py")
 - The "supportFile.py" file with general functions to execute the main file.
 - CoppeliaSim files to work with the "Remote LegacyAPI" of the CoppeliaSim: remoteApi.so, sim.py, simConst.py.
-- The robot scene: naoScene0.ttt, naoScene5.ttt
+- The robot scene (e.g. naoScene0.ttt, naoScene5.ttt)
 
 
 
