@@ -4,7 +4,7 @@ This repository includes the different material of the work performed in the stu
 
 It is structured according to the publications related with the topic of morphological development performed in the Integrated Group for Engineering research.
 
-For any doubt, write an issue or contact me at: martin.naya@udc.es
+For any doubt, write an issue or contact me: martin.naya@udc.es
 
 The Integrated Group For Engineering Research: https://gii.udc.es/
 
